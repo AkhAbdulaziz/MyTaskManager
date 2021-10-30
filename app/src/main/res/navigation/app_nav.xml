@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/app_nav"
+    app:startDestination="@id/mainScreen">
+
+    <fragment
+        android:id="@+id/mainScreen"
+        android:name="uz.gita.todo_app.ui.screens.MainScreen"
+        android:label="screen_main"
+        tools:layout="@layout/screen_main" >
+        <action
+            android:id="@+id/action_mainScreen_to_eventDialog"
+            app:destination="@id/eventDialog" />
+        <action
+            android:id="@+id/action_mainScreen_to_addTaskDialog"
+            app:destination="@id/addTaskDialog" />
+    </fragment>
+    <fragment
+        android:id="@+id/addTaskDialog"
+        android:name="uz.gita.todo_app.ui.screens.AddTaskScreen"
+        android:label="dialog_add_task"
+        tools:layout="@layout/screen_add_task" >
+        <argument
+            android:name="data"
+            app:argType="uz.gita.todo_app.data.entity.TaskEntity"
+            app:nullable="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/eventDialog"
+        android:name="uz.gita.todo_app.ui.dialog.EventDialog"
+        android:label="dialog_event"
+        tools:layout="@layout/dialog_event" />
+</navigation>

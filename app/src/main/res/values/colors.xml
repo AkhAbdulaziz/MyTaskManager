@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#026DAE</color>
+    <color name="purple_700">#153E61</color>// tablayout tab underline color
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+    <color name="colorAccent">#818181</color>
+    <color name="baseColor">#01335B</color>
+    <color name="secondColor">#026DAE</color>
+    <color name="textColor">#71B7E4</color>
+
+    <color name="todoPageColor">#064D87</color>
+    <color name="doingPageColor">#FFAC07</color>
+    <color name="donePageColor">#03C123</color>
+    <color name="grey">#717171</color>
+</resources>
