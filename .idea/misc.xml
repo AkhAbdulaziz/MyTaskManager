@@ -3,7 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/GITA/BOOTCAMP/Android/Applications/Lesson24_TouchListener_ToDoApp_PlayMarketVersion/ToDoAppLastVersion/app/src/main/res/drawable/rounded_dialog.xml" value="0.20185185185185187" />
         <entry key="..\:/GITA/BOOTCAMP/Android/Applications/Lesson24_TouchListener_ToDoApp_PlayMarketVersion/ToDoAppLastVersion/app/src/main/res/layout/activity_main.xml" value="0.15" />
+        <entry key="..\:/GITA/BOOTCAMP/Android/Applications/Lesson24_TouchListener_ToDoApp_PlayMarketVersion/ToDoAppLastVersion/app/src/main/res/layout/dialog_event.xml" value="0.16574074074074074" />
         <entry key="..\:/GITA/BOOTCAMP/Android/Applications/Lesson24_TouchListener_ToDoApp_PlayMarketVersion/ToDoAppLastVersion/app/src/main/res/layout/notification_layout.xml" value="0.1921875" />
         <entry key="..\:/GITA/BOOTCAMP/Android/Applications/Lesson24_TouchListener_ToDoApp_PlayMarketVersion/ToDoAppLastVersion/app/src/main/res/layout/page_done.xml" value="0.1" />
         <entry key="..\:/GITA/BOOTCAMP/Android/Applications/Lesson24_TouchListener_ToDoApp_PlayMarketVersion/ToDoAppLastVersion/app/src/main/res/layout/page_to_do.xml" value="0.1" />
