@@ -9,9 +9,11 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import by.kirich1409.viewbindingdelegate.viewBinding
 import dagger.hilt.android.AndroidEntryPoint
 import uz.gita.todo_app.R
 import uz.gita.todo_app.data.entity.TaskEntity
+import uz.gita.todo_app.databinding.PageToDoBinding
 import uz.gita.todo_app.ui.adapter.TaskAdapter
 import uz.gita.todo_app.ui.dialog.EventDialog
 import uz.gita.todo_app.ui.screens.AddTaskScreen
@@ -21,6 +23,7 @@ import uz.gita.todo_app.utils.cancelRequest
 
 @AndroidEntryPoint
 class TodoPage : Fragment(R.layout.page_to_do) {
+    private val binding by viewBinding(PageToDoBinding::bind)
     private val data = ArrayList<TaskEntity>()
     private val adapter by lazy { TaskAdapter(data) }
     private val viewModel: ToDoPageViewModel by viewModels()
@@ -59,6 +62,7 @@ class TodoPage : Fragment(R.layout.page_to_do) {
                     adapter.notifyItemRemoved(viewHolder.absoluteAdapterPosition)
                     updateDoingPageListener?.invoke()
                 }
+                checkAnimationView()
             }
         })
         itemTouchHelper.attachToRecyclerView(rv)
@@ -67,10 +71,13 @@ class TodoPage : Fragment(R.layout.page_to_do) {
             val dialog = EventDialog()
             val bundle = Bundle()
             bundle.putSerializable("data", data[pos])
+
             dialog.setDeleteListener {
                 viewModel.delete(data[pos])
+                cancelRequest(data[pos].notificationId)
                 data.removeAt(pos)
                 adapter.notifyItemRemoved(pos)
+                checkAnimationView()
             }
 
             dialog.setEditListener {
@@ -101,6 +108,17 @@ class TodoPage : Fragment(R.layout.page_to_do) {
         data.clear()
         data.addAll(it)
         adapter.notifyDataSetChanged()
+       checkAnimationView()
+    }
+
+    private  fun checkAnimationView(){
+        if (data.isEmpty()) {
+            binding.animationView.playAnimation()
+            binding.animationView.visibility = View.VISIBLE
+        } else {
+            binding.animationView.visibility = View.GONE
+            binding.animationView.pauseAnimation()
+        }
     }
 
     fun setUpdateDoingPageListener(f: () -> Unit) {

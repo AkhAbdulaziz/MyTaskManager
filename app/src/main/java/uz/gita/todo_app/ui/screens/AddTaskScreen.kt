@@ -154,6 +154,7 @@ class AddTaskScreen : Fragment(R.layout.screen_add_task) {
             addNoteCalendar.setText("$dateText")
         }, currentYear, currentMonth, currentDay)
 
+        datePickerDialog.datePicker.minDate = System.currentTimeMillis() - 1000
         datePickerDialog.show()
         datePickerDialog.getButton(DatePickerDialog.BUTTON_NEGATIVE)
             .setTextColor(ContextCompat.getColor(requireContext(), R.color.grey))
@@ -222,13 +223,6 @@ class AddTaskScreen : Fragment(R.layout.screen_add_task) {
         val isDayNotPast =
             enteredYear > year || (enteredYear == year && enteredMonth > month) || (enteredYear == year && enteredMonth == month && enteredDay > day) || (enteredYear == year && enteredMonth == month && enteredDay == day && calendar.timeInMillis > System.currentTimeMillis())
 
-
-        /*     showToast("$enteredYear $enteredMonth $enteredDay \n$year $month $day")*/
-        /*showToast(
-            "IS DAY NOT PAST = $isDayNotPast\n calendar.timeInMillis  = ${calendar.timeInMillis}\nSystem.currentTimeMillis() = ${System.currentTimeMillis()}\n difference = ${calendar.timeInMillis - (System.currentTimeMillis())}",
-            Toast.LENGTH_LONG
-        )*/
-
         if (isDayNotPast && addNoteTitle.text != null && addNoteTitle.text!!.isNotEmpty() && isTimeSelected) {
             val data = Data.Builder()
             data.putInt("id", viewModel.getMaxId())
@@ -270,6 +264,7 @@ class AddTaskScreen : Fragment(R.layout.screen_add_task) {
 
     private fun updateWorkRequest(id: Int, pagePos: Int, notificationId: String) = binding.scope {
         cancelRequest(notificationId)
+
         val calendarHelp = Calendar.getInstance()
         val day = calendarHelp.get(Calendar.DAY_OF_MONTH)
         val month = calendarHelp.get(Calendar.MONTH) + 1

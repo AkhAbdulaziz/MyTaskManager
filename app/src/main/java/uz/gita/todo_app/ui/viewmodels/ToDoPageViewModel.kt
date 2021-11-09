@@ -16,17 +16,14 @@ class ToDoPageViewModel @Inject constructor(private val repository: AppRepositor
 
     fun insert(data: TaskEntity) {
         repository.insert(data)
-        getDataByPagePos()
     }
 
     fun update(data: TaskEntity) {
         repository.update(data)
-        getDataByPagePos()
     }
 
     fun delete(data: TaskEntity) {
         repository.delete(data)
-        getDataByPagePos()
     }
 
     fun getDataByPagePos() {

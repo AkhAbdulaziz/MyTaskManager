@@ -98,4 +98,8 @@ dependencies {
      */
     implementation 'androidx.work:work-runtime-ktx:2.6.0'
 
+    /**
+     * Lotti animations
+     */
+    implementation "com.airbnb.android:lottie:4.1.0"
 }
