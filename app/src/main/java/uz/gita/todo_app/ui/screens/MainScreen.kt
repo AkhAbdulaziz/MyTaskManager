@@ -1,16 +1,22 @@
 package uz.gita.todo_app.ui.screens
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
+import android.view.MenuItem
 import android.view.View
+import androidx.core.view.GravityCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.viewpager2.widget.ViewPager2
 import by.kirich1409.viewbindingdelegate.viewBinding
+import com.google.android.material.navigation.NavigationView
 import com.google.android.material.tabs.TabLayoutMediator
 import dagger.hilt.android.AndroidEntryPoint
 import uz.gita.todo_app.R
-import uz.gita.todo_app.databinding.ScreenMainBinding
+import uz.gita.todo_app.app.App
+import uz.gita.todo_app.databinding.ScreenMainNavBinding
 import uz.gita.todo_app.ui.adapter.MainPageAdapter
 import uz.gita.todo_app.ui.pages.DoingPage
 import uz.gita.todo_app.ui.pages.DonePage
@@ -18,10 +24,13 @@ import uz.gita.todo_app.ui.pages.TodoPage
 import uz.gita.todo_app.ui.viewmodels.MainScreenViewModel
 import uz.gita.todo_app.utils.scope
 
+//TODO: Add settings screen and SpeechToText
+
 @AndroidEntryPoint
-class MainScreen : Fragment(R.layout.screen_main) {
+class MainScreen : Fragment(R.layout.screen_main_nav),
+    NavigationView.OnNavigationItemSelectedListener {
     private val viewModel: MainScreenViewModel by viewModels()
-    private val binding by viewBinding(ScreenMainBinding::bind)
+    private val binding by viewBinding(ScreenMainNavBinding::bind)
 
     private var _todoPage: TodoPage? = TodoPage()
     private val todoPage get() = _todoPage!!
@@ -42,8 +51,8 @@ class MainScreen : Fragment(R.layout.screen_main) {
             doingPage,
             donePage
         )
-        pager.adapter = adapter
-        TabLayoutMediator(tabLayout, pager) { tab, position ->
+        innerLayout.pager.adapter = adapter
+        TabLayoutMediator(innerLayout.tabLayout, innerLayout.pager) { tab, position ->
             when (position) {
                 0 -> tab.text = "Todo"
                 1 -> tab.text = "Doing"
@@ -51,17 +60,21 @@ class MainScreen : Fragment(R.layout.screen_main) {
             }
         }.attach()
 
-        pager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
+        innerLayout.pager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
             override fun onPageSelected(position: Int) {
                 super.onPageSelected(position)
                 if (position == 0) {
-                    buttonAdd.visibility = View.VISIBLE
+                    innerLayout.buttonAdd.visibility = View.VISIBLE
                 } else
-                    buttonAdd.visibility = View.GONE
+                    innerLayout.buttonAdd.visibility = View.GONE
             }
         })
 
-        buttonAdd.setOnClickListener {
+        innerLayout.menuBtn.setOnClickListener {
+            drawerLayout.openDrawer(GravityCompat.START)
+        }
+
+        innerLayout.buttonAdd.setOnClickListener {
             findNavController().navigate(MainScreenDirections.actionMainScreenToAddTaskDialog(null))
         }
 
@@ -74,6 +87,29 @@ class MainScreen : Fragment(R.layout.screen_main) {
         doingPage.setUpdateTodoPageListener {
             todoPage.loadData()
         }
+
+        lineAbout.setOnClickListener {
+            findNavController().navigate(R.id.action_mainScreen_to_aboutScreen)
+        }
+
+        lineShare.setOnClickListener {
+            val intent = Intent(Intent.ACTION_SEND)
+            intent.type = "text/plain"
+            val link =
+                "Pay quickly!: https://play.google.com/store/apps/details?id=${App.instance.packageName}"
+            intent.putExtra(Intent.EXTRA_TEXT, link)
+            requireActivity().startActivity(Intent.createChooser(intent, "Share:"))
+        }
+
+        lineMoreApps.setOnClickListener {
+            val intent = Intent(Intent.ACTION_VIEW)
+            intent.data =
+                Uri.parse(
+                    "https://play.google.com/store/apps/developer?id=GITA+Dasturchilar+Akademiyasi"
+                )
+            requireActivity().startActivity(intent)
+        }
+
     }
 
     override fun onDestroy() {
@@ -82,4 +118,6 @@ class MainScreen : Fragment(R.layout.screen_main) {
         _doingPage = null
         _donePage = null
     }
+
+    override fun onNavigationItemSelected(item: MenuItem): Boolean = true
 }

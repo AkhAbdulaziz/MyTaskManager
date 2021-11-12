@@ -17,4 +17,7 @@
     <color name="doingPageColor">#FFAC07</color>
     <color name="donePageColor">#03C123</color>
     <color name="grey">#717171</color>
+
+    <color name="greyColor">#424242</color>
+    <color name="red">#AF0909</color>
 </resources>

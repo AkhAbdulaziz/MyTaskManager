@@ -16,6 +16,9 @@
         <action
             android:id="@+id/action_mainScreen_to_addTaskDialog"
             app:destination="@id/addTaskDialog" />
+        <action
+            android:id="@+id/action_mainScreen_to_aboutScreen"
+            app:destination="@id/aboutScreen" />
     </fragment>
     <fragment
         android:id="@+id/addTaskDialog"
@@ -32,4 +35,9 @@
         android:name="uz.gita.todo_app.ui.dialog.EventDialog"
         android:label="dialog_event"
         tools:layout="@layout/dialog_event" />
+    <fragment
+        android:id="@+id/aboutScreen"
+        android:name="uz.gita.todo_app.ui.screens.AboutScreen"
+        android:label="screen_about"
+        tools:layout="@layout/screen_about" />
 </navigation>

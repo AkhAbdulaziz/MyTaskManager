@@ -6,7 +6,6 @@ import android.app.NotificationManager
 import android.content.Context
 import android.os.Build
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
@@ -254,11 +253,28 @@ class AddTaskScreen : Fragment(R.layout.screen_add_task) {
             )
             findNavController().popBackStack()
         } else if (addNoteTitle.text!!.isEmpty()) {
-            showToast("Task is empty, please type your task!")
+            addNoteTitle.apply {
+                hint = "Task is empty, please type your task!"
+                setHintTextColor(ContextCompat.getColor(requireContext(), R.color.red))
+            }
+//            showToast("Task is empty, please type your task!")
         } else if (!isTimeSelected) {
-            showToast("Time is not selected, please select it!")
+            addNoteTime.apply {
+                hint = "Time is not selected, please select it!"
+                setHintTextColor(ContextCompat.getColor(requireContext(), R.color.red))
+            }
+//            showToast("Time is not selected, please select it!")
+        } else if (addNoteCalendar.text!!.isEmpty()) {
+            addNoteCalendar.apply {
+                hint = "Day is not selected, please select it!"
+                setHintTextColor(ContextCompat.getColor(requireContext(), R.color.red))
+            }
         } else {
-            showToast("You cannot add task for past time!")
+            addNoteTime.apply {
+                hint = "You cannot add task for past time!"
+                setHintTextColor(ContextCompat.getColor(requireContext(), R.color.red))
+            }
+//            showToast("You cannot add task for past time!")
         }
     }
 
@@ -312,11 +328,28 @@ class AddTaskScreen : Fragment(R.layout.screen_add_task) {
             )
             findNavController().popBackStack()
         } else if (addNoteTitle.text!!.isEmpty()) {
-            showToast("Task is empty, please type your task!")
+            addNoteTitle.apply {
+                hint = "Task is empty, please type your task!"
+                setHintTextColor(ContextCompat.getColor(requireContext(), R.color.red))
+            }
+//            showToast("Task is empty, please type your task!")
         } else if (!isTimeSelected) {
-            showToast("Time is not selected, please select it!")
+            addNoteTime.apply {
+                hint = "Time is not selected, please select it!"
+                setHintTextColor(ContextCompat.getColor(requireContext(), R.color.red))
+            }
+//            showToast("Time is not selected, please select it!")
+        } else if (addNoteCalendar.text!!.isEmpty()) {
+            addNoteCalendar.apply {
+                hint = "Day is not selected, please select it!"
+                setHintTextColor(ContextCompat.getColor(requireContext(), R.color.red))
+            }
         } else {
-            showToast("You cannot add task for past time!")
+            addNoteTime.apply {
+                hint = "You cannot add task for past time!"
+                setHintTextColor(ContextCompat.getColor(requireContext(), R.color.red))
+            }
+//            showToast("You cannot add task for past time!")
         }
     }
 }
