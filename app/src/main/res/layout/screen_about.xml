@@ -28,23 +28,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="About"
+            android:text="@string/app_name"
             android:textColor="@color/white"
             android:textSize="18sp" />
     </FrameLayout>
-
-    <TextView
-        android:id="@+id/text1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="16dp"
-        android:text="@string/app_name"
-        android:textColor="@color/greyColor"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/actionBar" />
 
     <TextView
         android:gravity="center"
@@ -56,10 +43,9 @@
         android:text="@string/info1"
         android:textColor="@color/greyColor"
         android:textSize="16sp"
-        android:textStyle="bold"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/text1" />
+        app:layout_constraintTop_toBottomOf="@id/actionBar" />
 
     <TextView
         android:id="@+id/text3"
@@ -68,16 +54,15 @@
         android:justificationMode="inter_word"
         android:padding="16dp"
         android:text="The program has three categories of work modes: todo, doing, and done.
-\nTodo -> task was scheduled, but not yet completed.
+\n\nTodo -> task was scheduled, but not yet completed.
 \nDoing -> task in progress.
-\nDone -> Task completed.
-\nTo change the status of the tasks, simply swipe the task to the right or left.
+\nDone -> task completed.
+\n\nTo change the status of the tasks, simply swipe the task to the right or left.
 
 The exact day, time, and task description are required when creating the task.
 Days and times should not be preceded by the current day and time."
         android:textColor="@color/greyColor"
         android:textSize="16sp"
-        android:textStyle="bold"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/text2" />
@@ -92,7 +77,6 @@ Days and times should not be preceded by the current day and time."
         android:text="This program was created by Abdulaziz Akhmedov, a student of the GITA Academy of Programmers."
         android:textColor="@color/greyColor"
         android:textSize="16sp"
-        android:textStyle="bold"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/text3" />

@@ -25,18 +25,30 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <ImageView
-                android:id="@+id/header"
+            <com.airbnb.lottie.LottieAnimationView
+                android:id="@+id/animationView"
                 android:layout_width="match_parent"
                 android:layout_height="112dp"
-                android:background="@color/baseColor"
-                app:layout_constraintTop_toTopOf="parent" />
+                android:adjustViewBounds="true"
+                android:background="@color/white"
+                android:padding="8dp"
+                android:visibility="visible"
+                app:layout_constraintTop_toTopOf="parent"
+                app:lottie_autoPlay="true"
+                app:lottie_loop="true"
+                app:lottie_rawRes="@raw/lottiefiles_task_manager" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/greyColor"
+                app:layout_constraintTop_toBottomOf="@id/animationView" />
 
             <LinearLayout
-                android:layout_marginTop="8dp"
                 android:id="@+id/lineAbout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
                 android:background="?android:selectableItemBackground"
                 android:clickable="true"
                 android:focusable="true"
@@ -45,7 +57,7 @@
                 android:padding="16dp"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/header">
+                app:layout_constraintTop_toBottomOf="@id/animationView">
 
                 <ImageView
                     android:layout_width="wrap_content"

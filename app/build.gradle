@@ -4,24 +4,34 @@ plugins {
     id 'kotlin-kapt'
     id 'dagger.hilt.android.plugin'
     id 'androidx.navigation.safeargs.kotlin'
+    id 'com.google.gms.google-services'
+    id 'com.google.firebase.crashlytics'
 }
 
 android {
     compileSdk 31
 
     defaultConfig {
-        applicationId "uz.gita.todo_app"
+        applicationId "uz.gita.mytaskmanager"
         minSdk 21
         targetSdk 31
         versionCode 1
-        versionName "1.0"
+        versionName "1.0.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
-
+    signingConfigs {
+        release {
+            storeFile file(RELEASE_STORE_FILE)
+            storePassword RELEASE_STORE_PASSWORD
+            keyAlias RELEASE_KEY_ALIAS
+            keyPassword RELEASE_KEY_PASSWORD
+        }
+    }
     buildTypes {
         release {
-            minifyEnabled false
+            signingConfig signingConfigs.release
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
@@ -102,4 +112,16 @@ dependencies {
      * Lotti animations
      */
     implementation "com.airbnb.android:lottie:4.1.0"
+
+    /**
+     *  Switch Button
+     */
+    implementation 'com.github.angads25:toggle:1.1.0'
+
+    //  Firebase BoM
+    implementation platform('com.google.firebase:firebase-bom:29.0.0')
+    //  Firebase SDK for Google Analytics
+    implementation 'com.google.firebase:firebase-analytics-ktx'
+    //  Crashlytics libraries
+    implementation 'com.google.firebase:firebase-crashlytics-ktx'
 }

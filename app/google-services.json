@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "458099393445",
+    "project_id": "mytaskmanager-c2d06",
+    "storage_bucket": "mytaskmanager-c2d06.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:458099393445:android:aecfe8f56f9545dece5e4c",
+        "android_client_info": {
+          "package_name": "uz.gita.mytaskmanager"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "458099393445-t1sl92v1oohs5pve0l037b4oo8m369s5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDOJHYPogo43BTkCvS8sk6Flykuzc-V4Gs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "458099393445-t1sl92v1oohs5pve0l037b4oo8m369s5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
